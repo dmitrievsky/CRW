@@ -1,0 +1,134 @@
+:description
+Импорт данных
+
+:verbosity
+2
+
+:at
+01.01.2000
+
+:logFile
+%LogFiles\import.log
+
+:sourceParams
+type=STANDARD
+default driver=PARADOX
+path=c:\2\test
+langdriver=ancyrr
+
+:targetParams
+//type=INTRBASE
+server name=localhost:d:\CRW\CRW.gdb
+langdriver=ancyrr
+user name=SYSDBA
+password=313938313532313534313536313538
+
+:targetSQL
+delete from old_company
+:batchmove
+old_company=select c."count" as id, company as name from company c
+
+:targetSQL
+delete from old_children
+:batchmove
+old_children=select c."count" id, c.code, c.surname, c.name, c."date born" dae_born, c.sex from children c 
+
+:targetSQL
+delete from old_computer
+:batchmove
+old_computer=select c."count" id, c."level" as lvl from computer c 
+
+:targetSQL
+delete from old_COUNTRYS
+:batchmove
+old_COUNTRYS=select c."count" id, c.country from COUNTRYS c 
+
+:targetSQL
+delete from old_flags
+:batchmove
+old_flags=select f."count" id, f.flag, f.country from flags f 
+
+:targetSQL
+delete from old_type_ves
+:batchmove
+old_type_ves=select t."count" id, t.type_of_vessel from type_ves t 
+
+
+
+
+:targetSQL
+delete from old_employee
+:batchmove
+old_employee=select e."count" id, Code, Post, Surname, Name, e."Fathers name" as fathers_name,
+  e."Mothers name" as Mothers_name,
+  e."Date born" as date_born,
+  e."City born" as city_born,
+  e."Country born" as country_born,
+  Citizen,
+  e."Address country" as Address_country,
+  e."Address city" as Address_city,
+  e."Address street" as Address_street,
+  Phone,
+  e."Address note" as Address_note,
+  Marital,
+  Relative,
+  e."Name relative" as Name_relative,
+  e."Address relative" as Address_relative,
+  e."Color hair" as Color_hair,
+  e."Color eyes" Color_eyes,
+  Hight,
+  Weight,
+  Education,
+  e."Certificate number" Certificate_number,
+  e."Certificate grade" Certificate_grade,
+  e."Certificate place" Certificate_place,
+  e."Certificate expired" Certificate_expired,
+  e."Certificate issue" Certificate_issue,
+  e."Endor number" Endor_number,
+  e."Endor grade" Endor_grade,
+  e."Endor place" Endor_place,
+  e."Endor issue" Endor_issue,
+  e."Endor expired" Endor_expired,
+  English,
+  Photo,
+  e."Vessel type" Vessel_type,
+  Pay,
+  Trip,
+  e."Date trip" Date_trip,
+  e."Vessel name" Vessel_name,
+  e."Vessel plan" Vessel_plan,
+  e."Vessel date" Vessel_date,
+  e."Vessel note" Vessel_note,
+  Service,
+  e."Date registration" Date_registration,
+  e."Engine type" Engine_type,
+  Religion,
+  NearestAirport,
+  NoofChildren,
+  Languages,
+  DateChange,
+  Operator,
+  IdentificationNumber,
+  Overalls,
+  Shoes,
+  Rating,
+  Ces,
+  e."English_data" English_data,
+  Sms,
+  e."Sms_data" Sms_data,
+  Computer,
+  Computer_data Computer_data,
+  Marlins,
+  Ces_data Ces_data,
+  Deriefig,
+  Pool,
+  USA,
+  e."Authentical verification" Authentical_verification,
+  Subcontractor
+
+from employee e
+
+
+
+
+:disconnect
