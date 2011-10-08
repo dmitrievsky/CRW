@@ -18,20 +18,24 @@ langdriver=ancyrr
 
 :targetParams
 //type=INTRBASE
-server name=localhost:d:\CRW\CRW.gdb
+//server name=localhost:d:\CRW\CRW.gdb
+server name=sql2plus:g:\CRW\CRWM.GDB
 langdriver=ancyrr
 user name=SYSDBA
-password=313938313532313534313536313538
+//password=313938313532313534313536313538
+password=323438323733323634323732323735323135323135323235323233323233
 
 :targetSQL
 delete from old_company
 :batchmove
 old_company=select c."count" as id, company as name from company c
 
+/*
 :targetSQL
 delete from old_children
 :batchmove
 old_children=select c."count" id, c.code, c.surname, c.name, c."date born" dae_born, c.sex from children c 
+*/
 
 :targetSQL
 delete from old_computer
@@ -53,9 +57,57 @@ delete from old_type_ves
 :batchmove
 old_type_ves=select t."count" id, t.type_of_vessel from type_ves t 
 
+:targetSQL
+delete from old_engine
+:batchmove
+old_engine=select t."count" id, t."engine name" engine_name from engine t 
+where t."engine name" is not null
 
+:targetSQL
+delete from old_operator
+:batchmove
+old_operator=select t."count" id, t.nameoperator from operator t 
 
+:targetSQL
+delete from old_posts
+:batchmove
+old_posts=select p."count" id, p.code, p.post, p."full name" fullname, p.command, p.commandjunior from posts p
 
+:targetSQL
+delete from old_vessels
+:batchmove
+old_vessels=select 
+  v."count" id,
+  Vessel,
+  v."vessel type" Vessel_type,
+  Dwt,
+  Company,
+  v."Engine main" Engine_main,
+  v."Engine kind" Engine_kind,
+  v."Hp main" Hp_main,
+  v."Engine aux" Engine_aux,
+  v."Hp aux" Hp_aux,
+  v."Generator" Generators,
+  Flag,
+  Ours,
+  Operator,
+  v."Cargo gear" Cargo_gear,
+  Load,
+  Speed,
+  v."Automation class" Automation_class,
+  v."Crane type" Crane_type,
+  GMDSS,
+  ARPA,
+  GPS,
+  ECDIS,
+  v."Fuel type" Fuel_type,
+  Lenght,
+  Beam,
+  Draught
+
+from vessels v
+
+/*
 :targetSQL
 delete from old_employee
 :batchmove
@@ -90,7 +142,6 @@ old_employee=select e."count" id, Code, Post, Surname, Name, e."Fathers name" as
   e."Endor issue" Endor_issue,
   e."Endor expired" Endor_expired,
   English,
-  Photo,
   e."Vessel type" Vessel_type,
   Pay,
   Trip,
@@ -127,7 +178,7 @@ old_employee=select e."count" id, Code, Post, Surname, Name, e."Fathers name" as
   Subcontractor
 
 from employee e
-
+*/
 
 
 
