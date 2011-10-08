@@ -1,6 +1,6 @@
 @echo off
 set ROOT=d:\CRW
-@set SRC_DB=sql2plus:g:\CRW\CRWM.GDB
+@set SRC_DB=depot:d:\CRW\CRWM.GDB
 @set SRC_PSW="byntuhfnjh"
 @set IB_CLIENT="C:\FB25\bin\fbclient.dll"
 @set META_FILENAME=d:\CRW\export\CRW_META.SQL
