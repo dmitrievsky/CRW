@@ -19,7 +19,7 @@ langdriver=ancyrr
 :targetParams
 //type=INTRBASE
 //server name=localhost:d:\CRW\CRW.gdb
-server name=sql2plus:g:\CRW\CRWM.GDB
+server name=depot:d:\CRW\CRWM.GDB
 langdriver=ancyrr
 user name=SYSDBA
 //password=313938313532313534313536313538
@@ -69,10 +69,44 @@ delete from old_operator
 old_operator=select t."count" id, t.nameoperator from operator t 
 
 :targetSQL
+delete from old_ces
+:batchmove
+old_ces=select t."count" id, t.type_test from ces t 
+
+:targetSQL
 delete from old_posts
 :batchmove
 old_posts=select p."count" id, p.code, p.post, p."full name" fullname, p.command, p.commandjunior from posts p
 
+:targetSQL
+delete from old_exper
+:batchmove
+old_exper=select
+  e."count" id,
+  Code,
+  Post,
+  e."Vessel type" Vessel_type,
+  e."Vessel name" Vessel_name,
+  DWT,
+  Flag,
+  Company,
+  e."From date" From_date,
+  e."To date" To_date,
+  e."Engine main" Engine_main,
+  e."Engine kind" Engine_kind,
+  e."HP main" HP_main,
+  e."Engine aux" Engine_aux,
+  e."HP aux" HP_aux,
+  e."Generator" Generators,
+  Note,
+  e."Cargo gear" Cargo_gear,
+  Load,
+  Speed,
+  e."Automation class" Automation_class,
+  e."Crane type" Crane_type
+from exper e
+
+/*
 :targetSQL
 delete from old_vessels
 :batchmove
@@ -106,7 +140,7 @@ old_vessels=select
   Draught
 
 from vessels v
-
+*/
 /*
 :targetSQL
 delete from old_employee
